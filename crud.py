@@ -23,6 +23,15 @@ def create_movie(title, overview, release_date, poster_path):
 
     return movie
 
+def create_rating(score, movie, user):
+    """Create and return a movie rating"""
+    rating = Rating(score=score, movie=movie, user=user)
+
+    db.session.add(rating)
+    db.session.commit()
+
+    return rating
+
 
 if __name__ == '__main__':
     from server import app
