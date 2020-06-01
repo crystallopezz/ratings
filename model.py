@@ -66,8 +66,8 @@ class Rating(db.Model):
     user_id = db.Column(db.Integer,
                         db.ForeignKey('user.user_id'))
 
-    movie = db.relationship('Movie', backref='ratings')
-    user = db.relationship('User', backref='ratings')
+    movie = db.relationship('Movie', backref='Rating')
+    user = db.relationship('User', backref='Rating')
 
     def __repr__(self):
         return f'<Rating rating_id={self.rating_id} score={self.score}>'
