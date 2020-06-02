@@ -28,6 +28,13 @@ def show_movie(movie_id):
     
     return render_template("move_details.html", movie=movie)
 
+
+@app.route('/users')
+def show_all_users():
+    users = crud. show_all_users()
+
+    return render_template('all_users.html', users=users)
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
