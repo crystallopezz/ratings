@@ -28,12 +28,27 @@ def show_movie(movie_id):
     
     return render_template("move_details.html", movie=movie)
 
-
 @app.route('/users')
 def show_all_users():
+    """show all users"""
     users = crud. show_all_users()
 
     return render_template('all_users.html', users=users)
+
+@app.route('/users', methods=['POST'])
+def register_user():
+    """register a new user"""
+    email = request.form.get('email')
+    password = request.form.get('password')
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash("Sorry, a user with that email already exists.")
+    else: 
+        create_user(email, password)
+        flash("User created, please log in!")
+
+    return redirect("/")
 
 @app.route('/users/<user_id>')
 def show_user(user_id):

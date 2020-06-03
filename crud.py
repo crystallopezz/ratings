@@ -20,6 +20,10 @@ def get_user_by_id(movie_id):
     """return user with input user_id"""
     return User.query.get(movie_id)
 
+def get_user_by_email(email):
+    """return user with email or none if user doesn't exist"""
+    return User.query.filter_by(email=={email}).first()
+
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
 
