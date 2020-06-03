@@ -16,6 +16,10 @@ def show_all_users():
     """display all users"""
     return User.query.all()
 
+def get_user_by_id(movie_id):
+    """return user with input user_id"""
+    return User.query.get(movie_id)
+
 def create_movie(title, overview, release_date, poster_path):
     """Create and return a new movie."""
 

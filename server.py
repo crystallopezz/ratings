@@ -35,6 +35,12 @@ def show_all_users():
 
     return render_template('all_users.html', users=users)
 
+@app.route('/users/<user_id>')
+def show_user(user_id):
+    user = crud.get_user_by_id(user_id)
+
+    return render_template('user_details.html', user=user)
+
 if __name__ == '__main__':
     connect_to_db(app)
     app.run(host='0.0.0.0', debug=True)
